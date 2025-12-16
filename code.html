@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jaksel Property</title>
+  <link rel="stylesheet" href="/projectzaid_masfaisal/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<!-- tracking klik wa-->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const waButtons = document.querySelectorAll(
+      '.btn-wa, #wa-sticky-btn'
+    );
+
+    waButtons.forEach((btn) => {
+      btn.addEventListener('click', function () {
+
+        const brokerName = this.dataset.broker || 'General';
+        const source = this.id === 'wa-sticky-btn'
+          ? 'sticky_button'
+          : 'broker_card';
+
+        /* ===== GA4 TRACKING ===== */
+        if (typeof gtag === 'function') {
+          gtag('event', 'whatsapp_click', {
+            event_category: 'engagement',
+            event_label: brokerName,
+            source: source
+          });
+        }
+
+        /* ===== META PIXEL TRACKING ===== */
+        if (typeof fbq === 'function') {
+          fbq('trackCustom', 'WhatsAppClick', {
+            broker: brokerName,
+            source: source
+          });
+        }
+
+        /* ===== FALLBACK DEBUG ===== */
+        console.log('WA Click Tracked:', {
+          broker: brokerName,
+          source: source
+        });
+      });
+    });
+  });
+</script>
+
+<body>
+<!-- HEADER -->
+<header class="header">
+  <div class="container header-wrapper">
+    <div class="logo">🏠 Jaksel Property</div>
+    <nav class="nav">
+      <a href="#home">Home</a>
+      <a href="#properti">Properti</a>
+      <a href="#broker">Broker</a>
+    </nav>
+    <a href="https://wa.me/6285718090026?text=Halo%20Faisal,%20saya%20ingin%20konsultasi%20properti%20Jakarta%20Selatan" target="_blank" class="btn-primary btn-wa" data-broker="Faisal">
+        Hubungi Kami
+    </a>
+
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="container hero-content">
+    <h1>Temukan Properti Impian di<br><span>Jakarta Selatan</span></h1>
+    <p>
+      Dapatkan penawaran terbaik untuk rumah, apartemen, dan properti
+      komersial di area strategis Jakarta Selatan
+    </p>
+
+    <!--<div class="search-box"> # takeout dulu
+      <input type="text" placeholder="Cari lokasi, tipe properti..." />
+      <button>Cari</button>
+    </div>-->
+  </div>
+</section>
+
+<!-- PROPERTY LIST -->
+<section id="properti" class="property">
+  <div class="container">
+    <div class="section-title">
+      <h2>Properti Pilihan</h2>
+      <p>Jelajahi koleksi properti terbaik kami di berbagai lokasi strategis Jakarta Selatan</p>
+    </div>
+
+    <div class="property-grid">
+      <!-- CARD -->
+      <div class="property-card">
+        <img src="/projectzaid_masfaisal/image/image1.jpg" alt="Rumah Minimalis">
+        <div class="card-body">
+          <h3>Rumah Modern Minimalis</h3>
+          <p>Kebayoran Baru, Jakarta Selatan</p>
+          <strong>Rp 8.5M</strong>
+          <div class="spec">
+            <span>🛏 4</span>
+            <span>🛁 3</span>
+            <span>📐 250m²</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="/projectzaid_masfaisal/image/image2.jpg" alt="Apartemen">
+        <div class="card-body">
+          <h3>Apartemen Premium</h3>
+          <p>Senopati, Jakarta Selatan</p>
+          <strong>Rp 3.2M</strong>
+          <div class="spec">
+            <span>🛏 2</span>
+            <span>🛁 2</span>
+            <span>📐 85m²</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="/projectzaid_masfaisal/image/image3.jpg" alt="Villa">
+        <div class="card-body">
+          <h3>Villa Mewah</h3>
+          <p>Pondok Indah, Jakarta Selatan</p>
+          <strong>Rp 15M</strong>
+          <div class="spec">
+            <span>🛏 5</span>
+            <span>🛁 4</span>
+            <span>📐 450m²</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="/projectzaid_masfaisal/image/image4.jpg" alt="Cluster">
+        <div class="card-body">
+          <h3>Rumah Cluster Eksklusif</h3>
+          <p>Cilandak, Jakarta Selatan</p>
+          <strong>Rp 6.8M</strong>
+          <div class="spec">
+            <span>🛏 3</span>
+            <span>🛁 2</span>
+            <span>📐 180m²</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section id="broker" class="broker-section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Konsultasi dengan Broker Kami</h2>
+      <p>Tim broker profesional kami siap membantu Anda menemukan properti yang tepat</p>
+    </div>
+
+    <div class="broker-grid">
+
+      <!-- Broker 1 -->
+      <div class="broker-card">
+        <div class="avatar">Z</div>
+        <h3>Zaid</h3>
+        <p class="role"> Property Consultant</p>
+
+        <div class="broker-info">
+          <p>📞 +6283899283637</p>
+          <p>✉️ Spesialisasi: Rumah & Ruko</p>
+        </div>
+
+        <a 
+          href="https://wa.me/6283899283637?text=Halo%20Zaid,%20saya%20tertarik%20dengan%20properti%20di%20Jakarta%20Selatan"
+          target="_blank"
+          class="btn-wa"
+        >
+          💬 Chat via WhatsApp
+        </a>
+      </div>
+
+      <!-- Broker 2 -->
+      <div class="broker-card">
+        <div class="avatar">F</div>
+        <h3>Faisal</h3>
+        <p class="role">Senior Property Consultant</p>
+
+        <div class="broker-info">
+          <p>📞 +6285718090026</p>
+          <p>✉️ Spesialisasi: Rumah & Ruko</p>
+        </div>
+
+        <a 
+          href="https://wa.me/6285718090026?text=Halo%20Faisal,%20saya%20ingin%20konsultasi%20properti"
+          target="_blank"
+          class="btn-wa"
+        >
+          💬 Chat via WhatsApp
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+<footer class="footer">
+  <div class="container footer-grid">
+
+    <div>
+      <h4>🏠 Jaksel Property</h4>
+      <p>Solusi properti terpercaya untuk investasi dan hunian impian Anda di Jakarta Selatan.</p>
+    </div>
+
+    <div>
+      <h4>Kontak</h4>
+      <p>📍 Jakarta Selatan, Indonesia</p>
+      <p>📞 +6285718090026</p>
+      <p>✉️ jakselproperty@gmail.com</p>
+    </div>
+
+    <div>
+      <h4>Link Cepat</h4>
+      <a href="#home">Home</a>
+      <a href="#properti">Properti</a>
+      <a href="#broker">Broker</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 Jaksel Property. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>
